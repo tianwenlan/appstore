@@ -22,6 +22,12 @@ class HuaweiSpider(scrapy.Spider):
 		for href in hrefs:
 			url = href.extract()
 			yield scrapy.Request(url, callback=self.parse_item)
+			#yield scrapy.Request(url, self.parse, meta={
+			#	'splash':{
+			#		'endpoint': 'render.html',
+			#		'args':{'wait': 0.5}
+			#	}
+			#})
 
 	def parse_item(self, response):
 		page = Selector(response)
@@ -31,7 +37,7 @@ class HuaweiSpider(scrapy.Spider):
 		item['url'] = response.url
 		item['appid'] = re.match(r'http://.*/(.*)', item['url']).group(1)
 		item['intro'] = page.xpath('//meta[@name="description"]/@content').extract_first().encode('utf-8')
-		
+
 		divs = page.xpath('//div[@class="open-info"]')
 		recomm = ""
 
