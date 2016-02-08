@@ -50,7 +50,9 @@ DOWNLOAD_DELAY=5
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'scrapyjs.SplashMiddleware': 725,
+   	'scrapyjs.SplashMiddleware': 725,
+   	'scrapy.conrib.downloadermiddlewares.useragent.UserAgentMiddleware': None,
+	'appstore.spiders.random_useragent.RandomUserAgentMiddleware': 400,
 	#'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
 	#'appstore.random_useragent.RandomUserAgentMiddleware': 400,
 	#'appstore.random_proxy.RandomProxyMiddleware':100,
