@@ -22,12 +22,12 @@ class HuaweiSpider(scrapy.Spider):
 		for href in hrefs:
 			url = href.extract()
 			yield scrapy.Request(url, callback=self.parse_item)
-			#yield scrapy.Request(url, self.parse, meta={
-			#	'splash':{
-			#		'endpoint': 'render.html',
-			#		'args':{'wait': 0.5}
-			#	}
-			#})
+			yield scrapy.Request(url, self.parse, meta={
+				'splash':{
+					'endpoint': 'render.html',
+					'args':{'wait': 0.5}
+				}
+			})
 
 	def parse_item(self, response):
 		page = Selector(response)
