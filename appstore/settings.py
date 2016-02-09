@@ -71,7 +71,9 @@ HTTPCACHE_STORAGE = 'scrapyjs.SplashAwareFSCacheStorage'
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'appstore.pipelines.AppstorePipeline': 300,
+	'appstore.pipelines.AppstorePipeline': 300,
+	'appstore.pipelines.JsonWriterPipeline': 800,
+	#'appstore.pipelines.MongoPipeline': 1800,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
